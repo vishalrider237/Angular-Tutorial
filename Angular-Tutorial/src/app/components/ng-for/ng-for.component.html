@@ -1,0 +1,28 @@
+<div>
+    <!-- <h2>Ng For Tutorials</h2>
+    <div class="list" *ngFor="let student of students">
+        <h3>{{student.name}}</h3>
+        <h4>{{student.branch}}</h4>
+        <p>{{student.phone}}</p>
+    </div>
+    <button (click)="clearStudents()">Clear</button> -->
+    <table>
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let student of students; let i=index; let f=first; let l=last" [ngClass]="{first:f,last:l}">
+                <td>{{i+1}}</td>
+               <td>{{student.name}}</td>
+               <td>{{student.branch}}</td>
+               <td>{{student.phone}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="clearStudents()">Clear</button>
+</div>

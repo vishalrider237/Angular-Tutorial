@@ -1,0 +1,100 @@
+<div class="container">
+    <h2>Template Driven Form</h2>
+    <h3>User Registration Form</h3>
+    <form action="" #userForm="ngForm" (ngSubmit)="formSubmitted(userForm)">
+        <P style="color: green;" *ngIf="userForm.valid">Form is valid</P>
+        <P style="color: red;" *ngIf="userForm.invalid">Form is invalid</P>
+    <table>
+        <tr>
+            <td>Age</td>
+            <td>
+                <input type="number" placeholder="Enter here.." name="age" validatorName="Vishal" age1Validator ngModel #ageField="ngModel" required>
+                <div class="error" *ngIf="!ageField.valid && (ageField.dirty || ageField.touched)">
+                    <!-- <p>Invalid Email</p> -->
+                    <p [hidden]="!ageField.errors!['age']">
+                        Age must be greater than 18
+                      </p>
+                 </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <!-- <input required type="text" placeholder="Enter here.." name="name" #nameField="ngModel"   [(ngModel)]="user.name"/> -->
+                <input required type="text" placeholder="Enter here.." name="name" #nameField="ngModel"  ngModel/>
+                <!-- <div class="form-detail">
+                    
+                    <p>Value :{{nameField.value }}</p>
+                    <p>Dirty:{{nameField.dirty}}</p>
+                    <p>Valid:{{nameField.valid}}</p>
+                    <p>Invalid:{{nameField.invalid}}</p>
+                    <p>Touched:{{nameField.touched}}</p>
+                    
+                </div> -->
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                Email
+            </td>
+            <td>
+                <!-- <input required="" type="text" placeholder="Enter here.." name="email" [(ngModel)]="user.email" > -->
+                <input required="" type="text" placeholder="Enter here.." name="email" ngModel >
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                About
+            </td>
+            <td>
+                <textarea name="" id="" cols="21" rows="4" placeholder="Enter here" name="about" [(ngModel)]="user.about"  ></textarea>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td>
+                <input type="radio"  [(ngModel)]="user.gender" name="gender"  value="Male">Male <input type="radio" name="gender" [(ngModel)]="user.gender" value="Female" name="gender">Female
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                City
+            </td>
+            <td>
+                <select name="city"  [(ngModel)]="user.city"  >
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Patna">Patna</option>
+                </select>
+            </td>
+            
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button [disabled]="!userForm.valid" type="submit">Submit</button>
+                <button type="reset">Clear</button>
+            </td>
+        </tr>
+    </table>
+    <div class="form-detail">
+        <h2>Form Details</h2>
+        <p>Value :{{userForm.value | json}}</p>
+        <p>Dirty:{{userForm.dirty}}</p>
+        <p>Valid:{{userForm.valid}}</p>
+        <p>Invalid:{{userForm.invalid}}</p>
+        <p>Touched:{{userForm.touched}}</p>
+        <p>Submitted:{{userForm.submitted}}</p>
+    </div>
+</form>
+</div>

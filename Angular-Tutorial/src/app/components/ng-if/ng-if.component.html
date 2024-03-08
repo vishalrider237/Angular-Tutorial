@@ -1,0 +1,17 @@
+<div>
+    <h2>Ng If Tutorials</h2>
+    <input type="checkbox" (change)="changeState()">
+    <!-- <div *ngIf="count>1"> -->
+    <!-- <div style="color: green;" *ngIf="active then thenBlock ; else eleseBlock"> -->
+        <div style="color: green;" *ngIf="active  else eleseBlock">
+        <h3 >User is active</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit repellendus quas aliquid magnam eaque culpa ducimus? Recusandae aspernatur quia modi. Repudiandae voluptatem a consectetur sint ab magni nemo, quisquam repellat?</p>
+    </div>
+    <div [hidden]="active">This is hidden field</div>
+</div>
+<!-- <ng-template #thenBlock>
+  <h2>This is then block</h2>
+</ng-template> -->
+<ng-template #eleseBlock>
+  <h3 style="color: red;">User is not active</h3>
+</ng-template>

@@ -1,0 +1,12 @@
+.user-container{
+    width: 70%;
+    background-color: aquamarine;
+    padding: 10px;
+    margin: auto;
+}
+table{
+    border-collapse: collapse;
+}
+table tr td{
+    border: 1px solid black;
+}

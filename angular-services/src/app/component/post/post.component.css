@@ -1,0 +1,13 @@
+.post-container{
+    width: 70%;
+    background-color: antiquewhite;
+    padding: 10px;
+    margin: auto;
+}
+table{
+    border-collapse: collapse;
+}
+table tr td,th{
+    border: 1px solid olivedrab;
+    padding: 5px 20px;
+}

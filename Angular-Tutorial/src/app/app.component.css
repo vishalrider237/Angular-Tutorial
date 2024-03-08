@@ -1,0 +1,15 @@
+.container{
+    color: black;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+.h1{
+    color: red
+    ;
+}
+.textclass{
+    text-align: center;
+}

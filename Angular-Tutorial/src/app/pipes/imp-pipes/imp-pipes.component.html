@@ -1,0 +1,13 @@
+<div class="pipes-container">
+    <h2>{{name | uppercase}}</h2>
+    <!-- <h2>{{convertUppercase(name)}}</h2> -->
+    <h2>{{name | lowercase}}</h2>
+    <h2>{{name |slice:0:2}}</h2>
+    <hr>
+    <h1>Number,Percentage,Currency</h1>
+    <h2>Item Price:{{itemPrice | number:'2.2-4'}}</h2>
+    <h2>Percentage::{{percentage | percent:'2.2-3'}}</h2>
+    <h2>Amount is:{{amount|currency:'INR':true:'2.2-3'}}</h2>
+    <h2>{{'This is custom pipe' | upper}}</h2>
+    <h2>{{csDate|csPipeDate}}</h2>
+</div>

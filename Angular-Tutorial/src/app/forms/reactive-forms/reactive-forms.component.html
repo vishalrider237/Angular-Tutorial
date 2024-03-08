@@ -1,0 +1,166 @@
+<div class="form-container">
+    <h1>User Registraion Form</h1>
+    <form [formGroup]="userForm" (ngSubmit)="formSubmitted()" novalidate>
+    <table>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+               
+                <input required type="text" placeholder="Enter here.." name="name" formControlName="name" />
+               <div class="error" *ngIf="!name.valid && (name.dirty || name.dirty)">
+                  <!-- <p>Invalid Name</p> -->
+                  <p [hidden]="!name.errors!['required']">
+                    Name is Required
+                  </p>
+                  <p [hidden]="!name.errors!['minlength']">
+                    Minimum length must be 4
+                  </p>
+                  <p [hidden]="!name.errors!['maxlength']">
+                    Maximum length must be 10
+                  </p>
+               </div>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                Email
+            </td>
+            <td>
+                
+                <input  type="text" placeholder="Enter here.." name="email" formControlName="email" >
+                <div class="error" *ngIf="!email.valid && (email.dirty || email.dirty)">
+                    <!-- <p>Invalid Email</p> -->
+                    <p [hidden]="!email.errors!['email']">
+                        Invalid Email(abc@gmail.com)
+                      </p>
+                 </div>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                About
+            </td>
+            <td>
+                <textarea name="" id="" cols="21" rows="4" placeholder="Enter here" name="about"  formControlName="about"></textarea>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="text" formControlName="age"/></td>
+            <div class="error" *ngIf="!age.valid && (age.dirty || age.dirty)">
+                <!-- <p>Invalid Email</p> -->
+                <p [hidden]="!age.errors!['age']">
+                    Age must be greater than 18
+                  </p>
+             </div>
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td>
+                <input type="radio" name="gender"  value="Male" formControlName="gender">Male <input type="radio" name="gender"value="Female" name="gender" formControlName="gender">Female
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                City
+            </td>
+            <td>
+                <select name="city"  formControlName="city" >
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Kanpur">Kanpur</option>
+                    <option value="Patna">Patna</option>
+                </select>
+            </td>
+            
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button type="submit" [disabled]="!userForm.valid">Submit</button>&nbsp;
+                <button type="reset">Clear</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</div> 
+<h4>{{userForm.value | json}}</h4>
+<hr>
+<div class="form-container">
+    <h2>Login Form</h2>
+    <form [formGroup]="loginForm"  (ngSubmit)="loginFormSubmitted()">
+        <table>
+            <tr>
+                <td>Enter Email.</td>
+                <td><input type="email" name="email" formControlName="email"/></td>
+            </tr>
+            <tr formGroupName="address">
+                      <td>Enter Street</td>
+                      <td><input name="street" formControlName="street"></td>
+            </tr>
+            <tr>
+                <td>Enter Password.</td>
+                <td><input type="text" name="password" formControlName="password"/></td>
+            </tr>
+            <!-- <tr >
+                <td colspan="2" style="text-align: right;"><button type="submit">Login</button></td>
+                
+            </tr> -->
+        </table>
+        <div formArrayName="interest">
+             <div *ngFor="let interest of getInterst().controls; let i=index">
+                <div [formGroupName]="i">
+                   {{i}}
+                   <table>
+                      <tr>
+                        <td>Interest Name</td>
+                        <td>
+                            <input type="text" formControlName="name">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Time Per Day</td>
+                        <td>
+                            <input type="text" formControlName="timePerDay">
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <button (click)="removeInterest(i)">Remove</button>
+                          </td>
+                      </tr>
+                   </table>
+                </div>
+             </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <button (click)="addInterst()">Add Interest</button>
+</div>
+{{loginForm.value |json}}
+Valid:{{loginForm.valid}}
+<hr>
+<div class="form-container">
+    <h2>FriendList</h2>
+    <form [formGroup]="friendlistModel" (ngSubmit)="friendListFormSubmitted()">
+        <select formControlName="friends">
+            <option value="null" disabled>Select Name</option>
+          <option *ngFor="let f of friendList" [ngValue]="f.id">
+            {{f.name}}
+          </option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <input type="text" placeholder="Enter FriendName" [(ngModel)]=" dynamicFriendName">
+    <Button (click)="addFriendToList()">Add Friend</Button>
+    {{friendlistModel.value |json}}
+</div>

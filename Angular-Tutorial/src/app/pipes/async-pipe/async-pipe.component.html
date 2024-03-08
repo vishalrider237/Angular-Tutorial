@@ -1,0 +1,15 @@
+<p>async-pipe works!</p>
+<p>{{EventEmiiter|async}}</p>
+<button (click)="emitValue()">Next</button>
+<hr>
+<div style="color:red;" *ngIf="booleanOb|async ; else elseBlock">
+  <h2>This is true block</h2>
+</div>
+<ng-template #elseBlock>
+    <div style="color:green;">
+        <h2>This is false block</h2>
+      </div>
+    
+</ng-template>
+<h1 *ngIf="booleanOb |async as flag">{{flag}}</h1>
+

@@ -1,0 +1,33 @@
+<div class="container">
+   <div class="card mt-2">  
+    <div class="card-body">
+        <h1 class="my-4 text-center text-uppercase fw-bold">Temperature Converter</h1>
+    <h2 class="text-muted">Farenhite to Celcius</h2>
+    <div class="form-container">
+        <div class="my-4">
+        <label for="box1">Enter Temperature in Farenhite</label>
+        <div class="input-group">
+           
+                <input id="box1" type="text" class="form-control" placeholder="Enter here.." [(ngModel)]="valueInF">
+                <button class="btn btn-outline-secondary">Convert</button>
+           
+        </div>
+        <h1 *ngIf="valueInF>0" class="text-center text-primary fw-bold my-2">{{valueInF | TempConv:"C"}}C</h1>
+    </div>
+    </div>
+    <h2 class="text-muted">Celcius to Farenhite</h2>
+    <div class="form-container">
+        <div class="my-4">
+        <label for="box1">Enter Temperature in Celcius</label>
+        <div class="input-group">
+           
+                <input id="box1" type="text" class="form-control" placeholder="Enter here.." [(ngModel)]="valueInC" >
+                <button class="btn btn-outline-secondary">Convert</button>
+           
+        </div>
+        <h1 class="text-center text-primary fw-bold my-2" *ngIf="valueInC>0">{{valueInC | TempConv:"F"}}F</h1>
+    </div>
+    </div>
+      
+   </div>
+</div>

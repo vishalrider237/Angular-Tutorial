@@ -1,0 +1,26 @@
+<div>
+    <h2>Ng Switch Tutorials</h2>
+    <select [(ngModel)]="number" name="number" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <div [ngSwitch]="number">
+        <div *ngSwitchCase="1">
+            <h2>one</h2>
+        </div>
+        <div *ngSwitchCase="2">
+            <h2>Two</h2>
+        </div>
+        <div *ngSwitchCase="3">
+            <h2>Three</h2>
+        </div>
+        <div *ngSwitchCase="4">
+            <h2>Four</h2>
+        </div>
+        <div *ngSwitchDefault>
+            <h2>Invalid Number Seleted</h2>
+        </div>
+    </div>
+</div>

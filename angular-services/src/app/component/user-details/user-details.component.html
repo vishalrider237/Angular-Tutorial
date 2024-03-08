@@ -1,0 +1,16 @@
+<div class="user-container">
+    <h2>User Details</h2>
+    <button (click)="getUsers()">Get Users</button>
+    <table *ngIf="users">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>About</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.about}}</td>
+        </tr>
+    </table>
+</div>

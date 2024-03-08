@@ -1,0 +1,6 @@
+<div class="container">
+    <p>parent-compo works!</p>
+    <h2>Parent Counter {{parentCounter}}</h2>
+    <app-child-compo [counter]="45" [firstName]="'Ankit'" (customeEventEmitter)="parentMethod($event)"></app-child-compo>
+</div>
+
