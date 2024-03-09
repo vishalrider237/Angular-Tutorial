@@ -1,8 +1,11 @@
 <div class="navbar-container">
     <ul class="navbar">
         <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/services">Services</a></li>
+        <li><a [routerLink]="['/services']" [queryParams]="{'name':userName,'userId':id,'address':Address}">Services</a></li>
         <li><a routerLink="/about">About Us</a></li>
         <li><a routerLink="/contact">Contact Us</a></li>
+        <!-- <li><a routerLink="/profile/12/Vishal/Buxar">Profile</a></li> -->
+        <li><a [routerLink]="['/profile',id,userName,Address]">Profile</a></li>
+        <li><a routerLink="/products">Product</a></li>
     </ul>
 </div>

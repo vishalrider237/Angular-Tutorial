@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Routes ,RouterModule} from '@angular/router';
 import { ErrorComponent } from './components/error/error.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProductComponent } from './components/product/product.component';
+import { NgSpecComponent } from './components/ng-spec/ng-spec.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PriceComponent } from './components/price/price.component';
+import { ActivateGuard } from './guards/activate.guard';
+import { DeactivateGuard } from './guards/deactivate.guard';
+import { FormsModule } from '@angular/forms';
+import { ResolveGuard } from './guards/resolve.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 let routes:Routes=[
   {
@@ -19,7 +29,13 @@ let routes:Routes=[
   },
   {
     path:'home',
-    component:HomeComponent
+    component:HomeComponent,
+    canActivate:[ AuthGuard
+      ]  // Functional guard
+      ,canDeactivate:[()=>{
+        console.log("Leaving home page");
+        return false
+      }]
   },
   {
     path:'about',
@@ -27,11 +43,36 @@ let routes:Routes=[
   },
   {
     path:'services',
-    component: ServicesComponent
+    component: ServicesComponent,
+    canActivate:[ActivateGuard]
+  },
+  {
+    path:'profile/:userId/:userName/:userAddress',
+    component:ProfileComponent,
+    resolve:{data:ResolveGuard}
   },
   {
     path:'contact',
-    component:ContactUsComponent
+    component:ContactUsComponent,
+    canDeactivate:[DeactivateGuard]
+  },
+  {
+    path:'products',
+    component:ProductComponent,
+    children:[
+      {
+        path:'detail',
+        component:ProductDetailComponent
+      },
+      {
+        path:'spec',
+        component:NgSpecComponent
+      },
+      {
+        path:'price',
+        component:PriceComponent
+      }
+    ]
   },
   {
     path:'**',
@@ -48,12 +89,17 @@ let routes:Routes=[
     ServicesComponent,
     NavbarComponent,
     FooterComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProfileComponent,
+    ProductComponent,
+    NgSpecComponent,
+    ProductDetailComponent,
+    PriceComponent
   ],
   imports: [
-    BrowserModule,RouterModule.forRoot(routes)
+    BrowserModule,RouterModule.forRoot(routes),FormsModule
   ],
-  providers: [],
+  providers: [ActivateGuard,DeactivateGuard,ResolveGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
