@@ -1,0 +1,20 @@
+.navbar-container{
+   background-color: aliceblue;
+   padding: 2px;
+}
+.navbar{
+   justify-content: center;
+   padding-left: 1300px;
+    display: flex;
+    list-style-type: none;
+}
+.navbar li{
+    margin: 2px 5px;
+}
+.navbar li a{
+   
+    display: block;
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+}
