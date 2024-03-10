@@ -34,7 +34,7 @@ let routes:Routes=[
       ]  // Functional guard
       ,canDeactivate:[()=>{
         console.log("Leaving home page");
-        return false
+        return true
       }]
   },
   {

@@ -1,0 +1,16 @@
+<div #container>
+    <h1 #heading>Template Variable</h1>
+    <input #inputElement type="text" placeholder="Enter here">
+    <br>
+    <button (click)="printElement(heading,inputElement,container)">Print</button>
+    <app-child #childOb="child"></app-child>
+    {{childOb.students |json}}
+    <ng-template #testContainer>
+        <div #divele>
+            <h1>This is template variable</h1>
+        </div>
+    </ng-template>
+    <div *ngIf="2>1;then testContainer"></div>
+    {{testContainer}}
+    <!-- {{divele}} throw error -->
+</div>
